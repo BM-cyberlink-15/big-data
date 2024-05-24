@@ -1,0 +1,154 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Baş Sahypa{% endblock title %}
+
+{% block content %}
+    <!-- Widgets  -->
+    <div class="row">
+        <div class="col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="stat-widget-five">
+                        <div class="stat-icon dib flat-color-1">
+                            <i class="fa fa-vk" aria-hidden="true"></i>
+                                                </div>
+                        <div class="stat-content">
+                            <div class="text-left dib">
+                                <div class="stat-text"><span class="count">{{ Vkontakt }}</span></div>
+                                <div class="stat-heading">Vkontakt</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="stat-widget-five">
+                        <div class="stat-icon dib flat-color-2">
+                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="text-left dib">
+                                <div class="stat-text"><span class="count">{{ Facebook }}</span></div>
+                                <div class="stat-heading">Facebook</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="stat-widget-five">
+                        <div class="stat-icon dib flat-color-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="66" height="56"  class="bi bi-tiktok" viewBox="0 0 16 16">
+                                <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/>
+                              </svg>                        </div>
+                        <div class="stat-content">
+                            <div class="text-left dib">
+                                <div class="stat-text"><span class="count">{{ Agza }}</span></div>
+                                <div class="stat-heading">TikTok</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="stat-widget-five">
+                        <div class="stat-icon dib flat-color-4">
+                            <i class="fa fa-youtube-play" aria-hidden="true" style="color:red"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="text-left dib">
+                                <div class="stat-text"><span class="count">{{ YouTube }}</span></div>
+                                <div class="stat-heading">YouTube</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Widgets -->
+    
+    <div class="clearfix"></div>
+
+    <!-- Orders -->
+    <div class="orders">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="box-title">Statistika </h4>
+                    </div>
+                    <div class="card-body--">
+                        <div class="table-stats order-table ov-h">
+                            <table class="table ">
+                                <thead>
+                                    <tr>
+                                        <th class="serial">ID</th>
+                                        <th>Täze goshulan agza</th>
+                                        <th>kanaly</th>
+                                        <th>agza sany</th>
+                                        <th>yurdy</th>
+                                        <th>wideo goyan wagty</th>
+                                        <th>wideo ady</th>
+                                        <th>prasmotr</th>
+                                        <th>teswir sany</th>
+                                        <th>naçe wideo bar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% if orders %}
+                                    {% for order in orders %}
+                                    <tr>
+                                        <td class="serial">{{ forloop.counter }}</td>
+                                        <td>{{ order.supplier }}</td>
+                                        <td>{{ order.product }}</td>
+                                        <td>{{ order.design }}</td>
+                                        <td>{{ order.color }}</td>
+                                        <td>{{ order.buyer }}</td>
+                                        <td>{{ order.season }}</td>
+                                        <td>{{ order.drop }}</td>
+                                        <td>{{ order.created_date }}</td>
+                                        <td>
+                                            {% if order.status == 'pending' %}
+                                                <a class="btn btn-warning" href="">{{ order.status }}</a>
+                                            {% elif order.status == 'decline' %}
+                                                <a class="btn btn-danger" href="">{{ order.status }}</a>
+                                            {% elif order.status == 'complete' %}
+                                                <a class="btn btn-success" href="">{{ order.status }}</a>
+                                            {% elif order.status == 'approved' %}
+                                                <a class="btn btn-primary" href="">{{ order.status }}</a>
+                                            {% elif order.status == 'bulk' %}
+                                                <a class="btn btn-secondary" href="">{{ order.status }}</a>
+                                            {% else %}
+                                                <a class="btn btn-info" href="">{{ order.status }}</a>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    {% else %}
+                                        <tr><td>Hiç hili maglumat ýok</td></tr>
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                        </div> <!-- /.table-stats -->
+                    </div>
+                </div> <!-- /.card -->
+            </div>  <!-- /.col-lg-8 -->
+
+            
+        </div>
+    </div>
+    <!-- /.orders -->
+{% endblock content %}

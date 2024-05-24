@@ -1,0 +1,91 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Store | Login</title>
+    <meta name="description" content="Ela Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
+    <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="{% static 'assets/css/cs-skin-elastic.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+<style>
+     .background-video {
+    position: fixed;
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -99;
+  }
+  
+  .background-video video {
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+  }
+</style>
+</head>
+
+<body>
+    
+    <div class="container">
+        <div class="background-video">
+            <video autoplay muted loop id="myVideo">
+                <source src="https://videos.pexels.com/video-files/18743334/18743334-sd_640_360_30fps.mp4" type="video/mp4">
+            </video>  
+        </div> 
+        <div class="login-content">
+            <div class="login-logo">
+                <h2 style="color: rgb(255, 255, 255);   font-size:70px;">Big Data</h2>
+            </div>
+            <div class="login-form" style="background-color: rgba(105, 182, 135, 0.5);">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group" >
+                        <label style="color:white;">Ulanyjy ady</label>
+                        {{ form.username }}
+                    </div>
+                    <div class="form-group">
+                        <label style="color:white;">paroly</label>
+                        {{ form.password }}
+                    </div>
+                    <div class="checkbox">
+                        <label style="color:white;">
+                            <input type="checkbox" > Ýatda sakla
+                        </label>
+                        <label class="pull-right">
+                            <a href="#">Paroly ýatdan çykardyňmy?</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Log in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
